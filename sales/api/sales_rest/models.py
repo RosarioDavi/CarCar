@@ -37,6 +37,6 @@ class SalesRecord(models.Model):
         null=True,
         blank=True    
     )
-    price = models.PositiveIntegerField(max_length=20)
+    price = models.PositiveIntegerField()
 
     
