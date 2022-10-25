@@ -3,6 +3,9 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import AddCustomerForm from './sales_department/AddCustomerForm';
 import AddSalesPersonForm from './sales_department/AddSalesPersonForm';
+import CreateSaleRecordForm from './sales_department/CreateSaleRecordForm';
+import SalesList from './sales_department/SalesList';
+import SalesHistory from './sales_department/SalesHistory';
 
 function App() {
   return (
@@ -18,6 +21,15 @@ function App() {
           </Route>
           <Route path="salesperson">
             <Route path="new" element={<AddSalesPersonForm />} />
+          </Route>
+          <Route path="salesrecord">
+            <Route path="new" element={<CreateSaleRecordForm />} />
+          </Route>
+          <Route>
+            <Route path="saleslist" element={<SalesList />} />
+          </Route>
+          <Route>
+            <Route path="salespersonhistory" element={<SalesHistory />} />
           </Route>
         </Routes>
       </div>
