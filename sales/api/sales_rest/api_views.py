@@ -1,60 +1,10 @@
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from common.json import ModelEncoder
 from .models import Customer, AutomobileVO, SalesPerson, SalesRecord
+from .encoders import CustomerDetailEncoder,CustomerListEncoder,SalesPersonDetailEncoder,SalesRecordListEncoder, AutomobileVODetailEncoder, SalesRecordDetailEncoder
 
 # Create your views here.
-class CustomerListEncoder(ModelEncoder):
-    model = Customer
-    properties = ["name", "phone_number", "id"]
-
-class SalesRecordListEncoder(ModelEncoder):
-    model = SalesRecord
-    properties = ["price", "id"]
-
-    def get_extra_data(self, o):
-        return {
-            "customer": o.customer.phone_number,
-            "automobile": o.automobile.vin,
-            "salesperson": o.salesperson.employee_id
-        }
-
-class AutomobileVODetailEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = ["vin"]
-
-class CustomerDetailEncoder(ModelEncoder):
-    model = Customer
-    properties = [
-        "name",
-        "address",
-        "phone_number"
-    ]
-
-class SalesPersonDetailEncoder(ModelEncoder):
-    model = SalesPerson
-    properties = [
-        "name",
-        "employee_id"
-    ]
-
-
-class SalesRecordDetailEncoder(ModelEncoder):
-    model = SalesRecord
-    properties = [
-        "price",
-        "automobile",
-        "salesperson",
-        "customer"
-    ]
-    encoders = {
-        "automobile": AutomobileVODetailEncoder(),
-        "salesperson": SalesPersonDetailEncoder(),
-        "customer": CustomerDetailEncoder()
-    }
-
-
 @require_http_methods(["GET", "POST"])
 def api_list_customers(request):
     if request.method == "GET":
