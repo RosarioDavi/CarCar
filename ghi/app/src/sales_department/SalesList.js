@@ -26,13 +26,14 @@ class SalesList extends React.Component {
         return (
             <table className="table table-striped">
                 <thead>
-                  <tr>
-                    <th>SalesPerson</th>
-                    <th>Employee ID</th>
-                    <th>Customer Name</th>
-                    <th>Automobile VIN</th>
-                    <th>Sales Price</th>
-                  </tr>
+                    <h1>Sales List</h1>
+                        <tr>
+                            <th>SalesPerson</th>
+                            <th>Employee ID</th>
+                            <th>Customer Name</th>
+                            <th>Automobile VIN</th>
+                            <th>Sales Price</th>
+                        </tr>
                 </thead>
                 <tbody>          
                   {this.state.salesrecords.map(salesrecord => {
