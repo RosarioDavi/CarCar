@@ -3,6 +3,8 @@ volumes:
     external: true
 services:
   react:
+    stdin_open: true
+    tty: true
     image: node:lts-bullseye
     command: /bin/bash run.sh
     working_dir: /app
@@ -15,6 +17,8 @@ services:
       NODE_ENV: development
       HOST: "0.0.0.0"
   database:
+    stdin_open: true
+    tty: true
     image: postgres:14.2-bullseye
     volumes:
       - beta-data:/var/lib/postgresql/data
@@ -25,6 +29,8 @@ services:
     ports:
       - 15432:5432
   inventory-api:
+    stdin_open: true
+    tty: true
     build:
       context: ./inventory/api
       dockerfile: ./Dockerfile.dev
@@ -39,6 +45,8 @@ services:
       WAIT_HOSTS: database:5432
       WAIT_TIMEOUT: 240
   service-api:
+    stdin_open: true
+    tty: true
     build:
       context: ./service/api
       dockerfile: ./Dockerfile.dev
@@ -53,6 +61,8 @@ services:
       WAIT_HOSTS: database:5432
       WAIT_TIMEOUT: 240
   service-poller:
+    stdin_open: true
+    tty: true
     build:
       context: ./service/poll
       dockerfile: ./Dockerfile.dev
@@ -68,6 +78,8 @@ services:
       WAIT_HOSTS: database:5432,service-api:8000
       WAIT_TIMEOUT: 240
   sales-api:
+    stdin_open: true
+    tty: true
     build:
       context: ./sales/api
       dockerfile: ./Dockerfile.dev
@@ -82,6 +94,8 @@ services:
       WAIT_HOSTS: database:5432
       WAIT_TIMEOUT: 240
   sales-poller:
+    stdin_open: true
+    tty: true
     build:
       context: ./sales/poll
       dockerfile: ./Dockerfile.dev
