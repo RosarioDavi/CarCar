@@ -36,6 +36,13 @@ class SalesRecordListEncoder(ModelEncoder):
         "customer": CustomerDetailEncoder()
     }
 
+    # def get_extra_data(self, o):
+    #     return {
+    #         "automobile": o.automobile.vin,
+    #         "salesperson": [o.salesperson.name, o.salesperson.employee_id],
+    #         "customer": o.customer.name
+    #     }
+
 class SalesRecordDetailEncoder(ModelEncoder):
     model = SalesRecord
     properties = [

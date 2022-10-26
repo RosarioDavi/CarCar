@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class SalesPerson(models.Model):
     name = models.CharField(max_length=50)
-    employee_id = models.PositiveSmallIntegerField()
+    employee_id = models.PositiveSmallIntegerField(unique=True)
 
 
 class Customer(models.Model):
