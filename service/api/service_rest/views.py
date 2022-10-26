@@ -11,22 +11,24 @@ class AutomobileVOEncoder(ModelEncoder):
 
 class CustomerDetailEncoder(ModelEncoder):
     model = Customer
-    properties = ['name', 'phone_number']
+    properties = ['name', 'phone_number', 'id']
 
 class TechnicianDetailEncoder(ModelEncoder):
     model = Technician
-    properties = ['name', 'employee_number']
+    properties = ['name', 'employee_number', 'id']
 
 class ServiceAppointmentListEncoder(ModelEncoder):
     model = ServiceAppointment
     properties = [
         "automobile",
         "customer",
-        "id"
+        "id",
+        "assigned_technician"
             ]
     encoders = {
         "customer" : CustomerDetailEncoder(),
         "automobile" : AutomobileVOEncoder(),
+        "assigned_technician" : TechnicianDetailEncoder()
     
     }
 
@@ -65,6 +67,15 @@ def api_list_serviceAppointment(request, pk = None):
             auto_vin = content["automobile"]
             auto = AutomobileVO.objects.get(vin = auto_vin)
             content["automobile"] = auto
+            
+            customer = content["customer"]
+            customer = Customer.objects.get(pk = customer)
+            content["customer"] = customer
+
+            employee_number = content["assigned_technician"]
+            assigned_technician = Technician.objects.get(pk = employee_number)
+            content["assigned_technician"] = assigned_technician
+            
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
              {'message': "Invalid location id"},

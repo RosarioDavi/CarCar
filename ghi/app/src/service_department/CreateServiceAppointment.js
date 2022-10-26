@@ -8,9 +8,10 @@ class CreateServiceAppointment extends React.Component{
             customer: '',
             appointment_date: '',
             service_reason: '',
-            technician: '',
+            assigned_technician: '',
             technicians: [],
-            automobiles: [],
+            autos: [],
+            customers: []
         };
         this.handleAutoMobileChange = this.handleAutoMobileChange.bind(this);
         this.handleCustomerChange = this.handleCustomerChange.bind(this);
@@ -24,7 +25,10 @@ class CreateServiceAppointment extends React.Component{
     async handleSubmitChange(event) {
         event.preventDefault();
         const data = {...this.state};
-
+        delete data.autos;
+        delete data.technicians;
+        delete data.customers;
+        
         const locationUrl = 'http://localhost:8080/api/service/';
         const fetchConfig = {
         method: "POST",
@@ -38,8 +42,12 @@ class CreateServiceAppointment extends React.Component{
         const newLocation = await response.json();
         
         const cleared = {
-            name: '',
-            employee_number: ''
+            auto: '',
+            automobile: '',
+            customer: '',
+            appointment_date: '',
+            service_reason: '',
+            assigned_technician: '',
         };
         this.setState(cleared);
         }    
@@ -76,12 +84,20 @@ async componentDidMount(){
         const data = await response.json();
         this.setState({technicians: data.technicians});
     }
-    url = 'http://localhost:8080/api/service/'
+    url = 'http://localhost:8100/api/automobiles/'
     response = await fetch(url);
     if (response.ok){
         const data = await response.json();
-        this.setState({services: data.services});
+        this.setState({autos: data.autos});
     }
+
+    url = 'http://localhost:8080/api/customers/'
+    response = await fetch(url);
+    if (response.ok){
+        const data = await response.json();
+        this.setState({customers: data.customers});
+    }
+    
 } 
 
 
@@ -93,17 +109,28 @@ render() {
           <div className="shadow p-4 mt-4">
             <h1>Add a Service</h1>
             <form onSubmit={this.handleSubmitChange} id="create-service-form">
-              <div className="form-floating mb-3">
-                <input onChange={this.handleCustomerChange} value={this.state.customer} placeholder="Customer" required type="text" name="customer" id="name" className="form-control" />
-                <label htmlFor="customer">Customer</label>
-              </div>
+
+
               <div className="mb-3">
-                  <select onChange={this.handleAutoMobileChange} value={this.state.service} required id="Automobile" name="Automobile" className="form-select">
-                    <option value="">Automobile VIN</option>
-                    {this.state.services.map(service => {
+                  <select onChange={this.handleCustomerChange} value={this.state.customer} required id="customer" name="customer" className="form-select">
+                    <option value="">Customer</option>
+                    {this.state.customers.map(customer => {
                           return (
-                          <option key={service.vin} value={service.vin}>
-                              {service.vin}
+                          <option key={customer.phone_number} value={customer.id}>
+                              {customer.name}
+                          </option>
+                          );
+                      })}
+                  </select>
+                </div>
+
+              <div className="mb-3">
+                  <select onChange={this.handleAutoMobileChange} value={this.state.auto} required id="auto" name="auto" className="form-select">
+                    <option value="">Automobile VIN</option>
+                    {this.state.autos.map(auto => {
+                          return (
+                          <option key={auto.vin} value={auto.vin}>
+                              {auto.vin}
                           </option>
                           );
                       })}
@@ -118,11 +145,11 @@ render() {
                 <label htmlFor=" service_reason">Service Reason</label>
               </div>
               <div className="mb-3">
-                  <select onChange={this.handleAssignedTechnicianChange} value={this.state.technician} required id="assigned_technician" name="assigned_technician" className="form-select">
+                  <select onChange={this.handleAssignedTechnicianChange} value={this.state.assigned_technician} required id="technician" name="technician" className="form-select">
                     <option value="">Assigned Technician</option>
                     {this.state.technicians.map(technician => {
                           return (
-                          <option key={technician.employee_number} value={technician.employee_number}>
+                          <option key={technician.employee_number} value={technician.id}>
                               {technician.name}
                           </option>
                           );
