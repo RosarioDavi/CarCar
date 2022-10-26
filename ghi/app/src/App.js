@@ -6,6 +6,10 @@ import AddSalesPersonForm from './sales_department/AddSalesPersonForm';
 import CreateSaleRecordForm from './sales_department/CreateSaleRecordForm';
 import SalesList from './sales_department/SalesList';
 import SalesHistory from './sales_department/SalesHistory';
+import ManufacturerList from './inventory/ManufacturerList';
+import CreateManufacturerForm from './inventory/CreateManufacturerForm';
+import VehicleModelList from './inventory/VehicleModelList';
+import CreateVehicleModelForm from './inventory/CreateVehicleModelForm';
 
 function App() {
   return (
@@ -30,6 +34,18 @@ function App() {
           </Route>
           <Route>
             <Route path="salespersonhistory" element={<SalesHistory />} />
+          </Route>
+          <Route>
+            <Route path="manufacturerlist" element={<ManufacturerList/>} />
+          </Route>
+          <Route path="manufacturer">
+            <Route path="new" element={<CreateManufacturerForm/>} />
+          </Route>
+          <Route>
+            <Route path="vehiclemodel" element={<VehicleModelList/>} />
+          </Route>
+          <Route path="vehiclemodel">
+            <Route path="new" element={<CreateVehicleModelForm/>} />
           </Route>
         </Routes>
       </div>
