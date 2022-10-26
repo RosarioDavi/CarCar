@@ -111,9 +111,11 @@ def api_list_salesrecords(request, auto_vo_id=None):
             auto_vin = content["automobile"]
             auto = AutomobileVO.objects.get(vin=auto_vin)
             content["automobile"] = auto
+
             employ_id = content["salesperson"]
             employee = SalesPerson.objects.get(employee_id=employ_id)
             content["salesperson"] = employee
+
             customer_num = content["customer"]
             customer = Customer.objects.get(phone_number=customer_num)
             content["customer"] = customer
@@ -149,9 +151,11 @@ def api_show_salesrecords(request, pk):
             auto_vin = content["automobile"]
             auto = AutomobileVO.objects.get(vin=auto_vin)
             content["automobile"] = auto
+
             employ_id = content["salesperson"]
             employee = SalesPerson.objects.get(employee_id=employ_id)
             content["salesperson"] = employee
+            
             customer_num = content["customer"]
             customer = Customer.objects.get(phone_number=customer_num)
             content["customer"] = customer

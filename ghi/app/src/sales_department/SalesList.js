@@ -26,30 +26,30 @@ class SalesList extends React.Component {
         return (
             <div className="container">
                 <h1>Sales List</h1>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>SalesPerson</th>
-                            <th>Employee ID</th>
-                            <th>Customer Name</th>
-                            <th>Automobile VIN</th>
-                            <th>Sales Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>          
-                    {this.state.salesrecords.map(salesrecord => {
-                        return (
-                        <tr key={salesrecord.id}>
-                            <td>{ salesrecord.salesperson.name }</td>
-                            <td>{ salesrecord.salesperson.employee_id }</td>
-                            <td>{ salesrecord.customer.name }</td>
-                            <td>{ salesrecord.automobile.vin }</td>
-                            <td>{ salesrecord.price }</td>
-                        </tr>
-                        );
-                    })}
-                    </tbody>
-                </table>
+                    <table className="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>SalesPerson</th>
+                                <th>Employee ID</th>
+                                <th>Customer Name</th>
+                                <th>Automobile VIN</th>
+                                <th>Sales Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>          
+                        {this.state.salesrecords.map(salesrecord => {
+                            return (
+                            <tr key={salesrecord.id}>
+                                <td>{ salesrecord.salesperson.name }</td>
+                                <td>{ salesrecord.salesperson.employee_id }</td>
+                                <td>{ salesrecord.customer.name }</td>
+                                <td>{ salesrecord.automobile.vin }</td>
+                                <td>{ salesrecord.price }</td>
+                            </tr>
+                            );
+                        })}
+                        </tbody>
+                    </table>
               </div>
         );
     }
