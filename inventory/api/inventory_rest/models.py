@@ -26,7 +26,7 @@ class VehicleModel(models.Model):
 class Automobile(models.Model):
     color = models.CharField(max_length=50)
     year = models.PositiveSmallIntegerField()
-    vin = models.CharField(max_length=17, unique=True)
+    vin = models.CharField(max_length=17)
 
     model = models.ForeignKey(
         VehicleModel,
