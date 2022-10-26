@@ -37,7 +37,8 @@ class CreateVehicleModelForm extends React.Component {
           const cleared = {
             name: '',
             picture_url: '',
-            manufacturer_id: ''
+            manufacturer_id: '',
+            manufacturer: ''
           };
           this.setState(cleared);
         }    

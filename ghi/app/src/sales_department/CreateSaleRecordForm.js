@@ -34,17 +34,29 @@ class CreateSaleRecordForm extends React.Component {
           'Content-Type': 'application/json',
       },
     };
+
+    const autoUrl = `http://localhost:8100/api/automobiles/${data.automobile}/`;
+    const editConfig = {
+      method: "PUT",
+      body: JSON.stringify({sold: true}),
+      headers: {
+          'Content-Type': 'application/json',
+      },
+    }
+
     const response = await fetch(locationUrl, fetchConfig);
-    if (response.ok) {
-      const newLocation = await response.json();
-    
+    const response_auto = await fetch(autoUrl, editConfig);
+    if (response.ok && response_auto.ok) {
+
       const cleared = {
           automobile: '',
           salesperson: '',
           customer: '',
           price: '',
       };
+
       this.setState(cleared);
+      this.Auto();
     }
 
   }
@@ -69,19 +81,24 @@ class CreateSaleRecordForm extends React.Component {
     this.setState({price:value})
   }  
 
-  async componentDidMount() {
+
+
+  async Auto() {
     var url = 'http://localhost:8100/api/automobiles/';
 
     var response = await fetch(url);
 
     if (response.ok) {
       const data = await response.json();
-      this.setState({autos: data.autos})
+      const filterdata = data.autos.filter(auto => auto.sold === false) 
+      this.setState({autos: filterdata})
     }
+  }
     
-    url = 'http://localhost:8090/api/salespersons/';
+  async componentDidMount() {
+    var url = 'http://localhost:8090/api/salespersons/';
 
-    response = await fetch(url);
+    var response = await fetch(url);
 
     if (response.ok) {
       const data = await response.json();

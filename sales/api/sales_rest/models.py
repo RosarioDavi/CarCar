@@ -15,6 +15,7 @@ class AutomobileVO(models.Model):
     vin = models.CharField(max_length=50)
     href = models.CharField(max_length=200, unique=True)
 
+
 class SalesRecord(models.Model):
     automobile = models.ForeignKey(
         AutomobileVO,

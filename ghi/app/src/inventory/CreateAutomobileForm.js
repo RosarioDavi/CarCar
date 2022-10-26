@@ -41,7 +41,8 @@ class CreateAutomobileForm extends React.Component {
             color: '',
             year: '',
             vin: '',
-            model_id: ''
+            model_id: '',
+            model: ''
           };
           this.setState(cleared);
         }    
