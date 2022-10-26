@@ -6,7 +6,7 @@ class CreateVehicleModelForm extends React.Component {
         this.state = {
           name: '',
           picture_url: '',
-          manufacturer: '',
+          manufacturer_id: '',
           manufacturers: []
         };
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -19,6 +19,7 @@ class CreateVehicleModelForm extends React.Component {
     async handleSubmitChange(event) {
         event.preventDefault();
         const data = {...this.state};
+        console.log(data);
         delete data.manufacturers;
     
         const locationUrl = 'http://localhost:8100/api/models/';
@@ -36,7 +37,7 @@ class CreateVehicleModelForm extends React.Component {
           const cleared = {
             name: '',
             picture_url: '',
-            manufacturer: ''
+            manufacturer_id: ''
           };
           this.setState(cleared);
         }    
@@ -54,7 +55,7 @@ class CreateVehicleModelForm extends React.Component {
 
     handleManufacturerChange(event) {
       const value = event.target.value;
-      this.setState({manufacturer: value})
+      this.setState({manufacturer_id: value})
     }
    
     async componentDidMount() {
