@@ -23,8 +23,12 @@ class ServiceAppointmentListEncoder(ModelEncoder):
         "automobile",
         "customer",
         "id",
-        "assigned_technician"
-            ]
+        "assigned_technician",
+        "service_reason",
+        "appointment_date",
+        "time",
+        "finished"
+    ]
     encoders = {
         "customer" : CustomerDetailEncoder(),
         "automobile" : AutomobileVOEncoder(),
@@ -40,6 +44,9 @@ class ServiceAppointmentDetailEncoder(ModelEncoder):
         "appointment_date",
         "assigned_technician",
         "service_reason",
+        "time",
+        "finished"
+        
     ]
 
     encoders = {
@@ -49,14 +56,31 @@ class ServiceAppointmentDetailEncoder(ModelEncoder):
     
     }
 
+@require_http_methods(["GET"])
+def api_list_filter(request):
+    services = ServiceAppointment.objects.filter(finished=False)
+    return JsonResponse(
+            {"services": services}, encoder = ServiceAppointmentListEncoder
+        )
+
+@require_http_methods(['PUT'])
+def api_show_filter(request, pk):
+    content = json.loads(request.body)
+    ServiceAppointment.objects.filter(id=pk).update(**content)
+    service= ServiceAppointment.objects.get(id=pk)
+    return JsonResponse(
+        service,
+        encoder = ServiceAppointmentDetailEncoder,
+        safe = False
+    )
 
 @require_http_methods(["GET", "POST"])
-def api_list_serviceAppointment(request, pk = None):
+def api_list_serviceAppointment(request):
     if request.method == "GET":
-        if pk is not None:
-            services = ServiceAppointment.objects.filter(auto = pk)
-        else:
-            services = ServiceAppointment.objects.all()
+        
+        services = ServiceAppointment.objects.all()
+        
+            
         return JsonResponse(
             {"services": services}, encoder = ServiceAppointmentListEncoder
         )
