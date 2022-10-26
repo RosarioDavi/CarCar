@@ -42,9 +42,13 @@ class ServiceAppointment(models.Model):
         
     )
 
+    finished = models.BooleanField(default = False )
+
     appointment_date = models.DateField(auto_now_add = True)
 
     service_reason = models.CharField(max_length = 250 )
+
+    time = models.TimeField(null = True, auto_now=False, auto_now_add=False, )
 
     assigned_technician = models.ForeignKey( 
         Technician,

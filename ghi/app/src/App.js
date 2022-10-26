@@ -14,6 +14,7 @@ import VehicleModelList from './inventory/VehicleModelList';
 import CreateVehicleModelForm from './inventory/CreateVehicleModelForm';
 import CreateAutomobileForm from './inventory/CreateAutomobileForm';
 import AutomobileList from './inventory/AutomobileList'
+import ServiceAppointmentList from './service_department/ServiceAppointmentList';
 
 function App() {
   return (
@@ -52,6 +53,9 @@ function App() {
           <Route path="automobile" element={<AutomobileList/>} />
           <Route path="automobile">
             <Route path="new" element={<CreateAutomobileForm/>} />
+          </Route>
+          <Route path="serviceappointmentlist">
+            <Route path="new" element={<ServiceAppointmentList/>} />
           </Route>
         </Routes>
       </div>

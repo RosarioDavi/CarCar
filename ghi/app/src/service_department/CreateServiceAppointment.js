@@ -9,6 +9,7 @@ class CreateServiceAppointment extends React.Component{
             appointment_date: '',
             service_reason: '',
             assigned_technician: '',
+            time: '',
             technicians: [],
             autos: [],
             customers: []
@@ -19,6 +20,7 @@ class CreateServiceAppointment extends React.Component{
         this.handleAppointmentDateChange=this.handleAppointmentDateChange.bind(this);
         this.handleServiceReasonChange=this.handleServiceReasonChange.bind(this);
         this.handleAssignedTechnicianChange=this.handleAssignedTechnicianChange.bind(this);
+        this.handleTimeChange=this.handleTimeChange.bind(this);
     }
 
 
@@ -48,6 +50,7 @@ class CreateServiceAppointment extends React.Component{
             appointment_date: '',
             service_reason: '',
             assigned_technician: '',
+            time: '',
         };
         this.setState(cleared);
         }    
@@ -77,6 +80,12 @@ class CreateServiceAppointment extends React.Component{
         const value = event.target.value;
         this.setState({assigned_technician: value})
     }
+
+    handleTimeChange(event){
+        const value = event.target.value;
+        this.setState({time: value})
+    }
+    
 async componentDidMount(){
     var url = 'http://localhost:8080/api/technicians/'
     var response = await fetch(url);
@@ -139,6 +148,10 @@ render() {
               <div className="form-floating mb-3">
                 <input onChange={this.handleAppointmentDateChange} value={this.state.appointment_date} placeholder="Appointment Date" required type="date" name="appointment_date" id="appointment_date" className="form-control" />
                 <label htmlFor="appointment_date">Appointment Date</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input onChange={this.handleTimeChange} value={this.state.time} placeholder="Appointment Time" required type="time" name="time" id="time" className="form-control" />
+                <label htmlFor="time">Appointment Time</label>
               </div>
               <div className="form-floating mb-3">
                 <input onChange={this.handleServiceReasonChange} value={this.state.service_reason} placeholder="Service Reason" required type="text" name="service_reason" id="service_reason" className="form-control" />
