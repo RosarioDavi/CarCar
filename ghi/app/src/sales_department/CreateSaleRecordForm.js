@@ -1,6 +1,7 @@
 import React from 'react';
 
 class CreateSaleRecordForm extends React.Component {
+
   state = {
     automobile: '',
     salesperson: '',
@@ -48,7 +49,7 @@ class CreateSaleRecordForm extends React.Component {
       };
 
       this.setState(cleared);
-      // this.Auto();
+      this.componentDidMount();
     }
 
   }
@@ -72,20 +73,6 @@ class CreateSaleRecordForm extends React.Component {
     const value = event.target.value;
     this.setState({price:value})
   }  
-
-
-
-  // async Auto() {
-  //   var url = 'http://localhost:8100/api/automobiles/';
-
-  //   var response = await fetch(url);
-
-  //   if (response.ok) {
-  //     const data = await response.json();
-  //     const filterdata = data.autos.filter(auto => auto.sold === false) 
-  //     this.setState({autos: filterdata})
-  //   }
-  // }
     
   async componentDidMount() {
     var url = 'http://localhost:8100/api/automobiles/';

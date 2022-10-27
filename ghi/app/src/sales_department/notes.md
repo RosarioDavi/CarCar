@@ -23,7 +23,6 @@
 
 
 
-
     this.Auto();
     Goes under line 51 in CreateSaleRecordForm
 
