@@ -1,11 +1,15 @@
 import React from 'react';
 
 class VehicleModelList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            models: []
-        }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         models: []
+    //     }
+    // }
+
+    state = {
+        models: []
     }
 
     async loadVehicleModel() {

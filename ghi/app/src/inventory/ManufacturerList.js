@@ -1,11 +1,15 @@
 import React from 'react';
 
 class ManufacturerList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            manufacturers: []
-        }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         manufacturers: []
+    //     }
+    // }
+    
+    state = {
+        manufacturers: []
     }
 
     async loadManufacturer() {

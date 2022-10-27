@@ -1,25 +1,30 @@
 import React from 'react';
 
 class CreateSaleRecordForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      automobile: '',
-      salesperson: '',
-      customer: '',
-      price: '',
-      autos: [],
-      salespersons: [],
-      customers: []
-    };
-    this.handlePriceChange = this.handlePriceChange.bind(this);
-    this.handleCustomerChange = this.handleCustomerChange.bind(this);
-    this.handleSalesPersonChange = this.handleSalesPersonChange.bind(this);
-    this.handleAutomobileChange = this.handleAutomobileChange.bind(this);
-    this.handleSubmitChange = this.handleSubmitChange.bind(this);
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     automobile: '',
+  //     salesperson: '',
+  //     customer: '',
+  //     price: '',
+  //     autos: [],
+  //     salespersons: [],
+  //     customers: []
+  //   };
+  // }
 
-  async handleSubmitChange(event) {
+  state = {
+    automobile: '',
+    salesperson: '',
+    customer: '',
+    price: '',
+    autos: [],
+    salespersons: [],
+    customers: []
+  };
+
+  handleSubmitChange = async (event) => {
     event.preventDefault();
     const data = {...this.state};
     delete data.salespersons;
@@ -56,34 +61,46 @@ class CreateSaleRecordForm extends React.Component {
       };
 
       this.setState(cleared);
-      this.Auto();
+      // this.Auto();
     }
 
   }
 
-  handleAutomobileChange(event) {
+  handleAutomobileChange = (event) => {
     const value = event.target.value;
     this.setState({automobile:value})
   }
 
-  handleSalesPersonChange(event) {
+  handleSalesPersonChange = (event) => {
     const value = event.target.value;
     this.setState({salesperson:value})
   }
 
-  handleCustomerChange(event) {
+  handleCustomerChange = (event) => {
     const value = event.target.value;
     this.setState({customer:value})
   }
 
-  handlePriceChange(event) {
+  handlePriceChange = (event) => {
     const value = event.target.value;
     this.setState({price:value})
   }  
 
 
 
-  async Auto() {
+  // async Auto() {
+  //   var url = 'http://localhost:8100/api/automobiles/';
+
+  //   var response = await fetch(url);
+
+  //   if (response.ok) {
+  //     const data = await response.json();
+  //     const filterdata = data.autos.filter(auto => auto.sold === false) 
+  //     this.setState({autos: filterdata})
+  //   }
+  // }
+    
+  async componentDidMount() {
     var url = 'http://localhost:8100/api/automobiles/';
 
     var response = await fetch(url);
@@ -92,10 +109,8 @@ class CreateSaleRecordForm extends React.Component {
       const data = await response.json();
       const filterdata = data.autos.filter(auto => auto.sold === false) 
       this.setState({autos: filterdata})
-    }
-  }
-    
-  async componentDidMount() {
+    }    
+
     var url = 'http://localhost:8090/api/salespersons/';
 
     var response = await fetch(url);

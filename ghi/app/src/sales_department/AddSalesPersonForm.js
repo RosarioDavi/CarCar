@@ -1,19 +1,21 @@
 import React from 'react';
 
 class AddSalesPersonForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: '',
-            employee_id: ''
-        };
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleIdChange = this.handleIdChange.bind(this);
-        this.handleSubmitChange = this.handleSubmitChange.bind(this);
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         name: '',
+    //         employee_id: ''
+    //     };
+    // }
+
+    state = {
+        name: '',
+        employee_id: ''
+    };
 
 
-    async handleSubmitChange(event) {
+    handleSubmitChange = async (event) => {
         event.preventDefault();
         const data = {...this.state};
     
@@ -27,7 +29,6 @@ class AddSalesPersonForm extends React.Component {
         };
         const response = await fetch(locationUrl, fetchConfig);
         if (response.ok) {
-          const newLocation = await response.json();
         
           const cleared = {
             name: '',
@@ -37,12 +38,12 @@ class AddSalesPersonForm extends React.Component {
         }    
     }
     
-    handleNameChange(event) {
+    handleNameChange = (event) => {
         const value = event.target.value;
         this.setState({name: value})
     }
 
-    handleIdChange(event) {
+    handleIdChange = (event) => {
         const value = event.target.value;
         this.setState({employee_id: value})
     }

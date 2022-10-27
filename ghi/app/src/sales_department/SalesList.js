@@ -1,11 +1,15 @@
 import React from 'react';
 
 class SalesList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            salesrecords: []
-        }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         salesrecords: []
+    //     }
+    // }
+
+    state = {
+        salesrecords: []
     }
 
     async loadSalesRecord() {

@@ -1,11 +1,15 @@
 import React from 'react';
 
 class AutomobileList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            autos: []
-        }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         autos: []
+    //     }
+    // }
+
+    state = {
+        autos: []
     }
 
     async loadAutomobiles() {

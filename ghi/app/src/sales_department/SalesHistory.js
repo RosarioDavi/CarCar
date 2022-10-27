@@ -1,15 +1,24 @@
 import React from 'react';
 
 class SalesHistory extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            salesperson: '',
-            salesrecords: [],
-            salespersons:[]
-        }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         salesperson: '',
+    //         salesrecords: [],
+    //         salespersons:[]
+    //     }
+    // }
+
+    state = {
+        salesperson: '',
+        salesrecords: [],
+        salespersons:[]
+    }
     
-        this.handleChange = this.handleChange.bind(this);
+    handlePersonChange = (event) => {
+        const value = event.target.value
+        this.setState({salesperson: value})
     }
 
     async loadSalesRecord() {
@@ -37,16 +46,11 @@ class SalesHistory extends React.Component {
         this.loadSalesPerson()
     }
     
-    handleChange(event) {
-        const value = event.target.value
-        this.setState({salesperson: value})
-    }
-
     render () {
         return (
             <div className="container">
             <h1>Sales Person History</h1>
-                <select onChange={this.handleChange} value={this.state.salesperson} required id="salesperson" name="salesperson" className="form-select">
+                <select onChange={this.handlePersonChange} value={this.state.salesperson} required id="salesperson" name="salesperson" className="form-select">
                     <option value="">Select SalesPerson</option>
                     {this.state.salespersons.map(salesperson => {
                         return (

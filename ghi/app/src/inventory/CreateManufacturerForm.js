@@ -1,16 +1,18 @@
 import React from 'react';
 
 class CreateManufacturerForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: ''
-        };
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleSubmitChange = this.handleSubmitChange.bind(this);
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         name: ''
+    //     };
+    // }
 
-    async handleSubmitChange(event) {
+    state = {
+        name: ''
+    };
+
+    handleSubmitChange = async (event) => {
         event.preventDefault();
         const data = {...this.state};
     
@@ -33,7 +35,7 @@ class CreateManufacturerForm extends React.Component {
         }    
     }
 
-    handleNameChange(event) {
+    handleNameChange = (event) => {
         const value = event.target.value;
         this.setState({name: value})
     }

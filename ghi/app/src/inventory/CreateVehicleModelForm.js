@@ -1,22 +1,24 @@
 import React from 'react';
 
 class CreateVehicleModelForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-          name: '',
-          picture_url: '',
-          manufacturer_id: '',
-          manufacturers: []
-        };
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handlePictureChange = this.handlePictureChange.bind(this);
-        this.handleManufacturerChange = this.handleManufacturerChange.bind(this);
-        this.handleSubmitChange = this.handleSubmitChange.bind(this);
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //       name: '',
+    //       picture_url: '',
+    //       manufacturer_id: '',
+    //       manufacturers: []
+    //     };
+    // }
 
+    state = {
+      name: '',
+      picture_url: '',
+      manufacturer_id: '',
+      manufacturers: []
+    };
 
-    async handleSubmitChange(event) {
+    handleSubmitChange = async (event) => {
         event.preventDefault();
         const data = {...this.state};
         console.log(data);
@@ -44,17 +46,17 @@ class CreateVehicleModelForm extends React.Component {
         }    
     }
     
-    handleNameChange(event) {
+    handleNameChange = (event) => {
       const value = event.target.value;
       this.setState({name: value})
     }
 
-    handlePictureChange(event) {
+    handlePictureChange = (event) => {
       const value = event.target.value;
       this.setState({picture_url: value})
     }
 
-    handleManufacturerChange(event) {
+    handleManufacturerChange = (event) => {
       const value = event.target.value;
       this.setState({manufacturer_id: value})
     }

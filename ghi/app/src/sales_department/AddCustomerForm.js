@@ -1,20 +1,30 @@
 import React from 'react';
 
 class AddCustomerForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: '',
-            address: '',
-            phone_number: ''
-        };
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleAddressChange = this.handleAddressChange.bind(this);
-        this.handleNumberChange = this.handleNumberChange.bind(this);
-        this.handleSubmitChange = this.handleSubmitChange.bind(this);
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         name: '',
+    //         address: '',
+    //         phone_number: ''
+    //     };
+    // }
+    // this.state method
+    
+    state = {
+        name: '',
+        address: '',
+        phone_number: ''
+    };
 
-    async handleSubmitChange(event) {
+    // handleChange = (event) => {
+    //     const value = event.target.value;
+    //     const name = event.target.name;
+    //     this.setState({[name]: value});
+    // }
+    // handlechange will allow one handlechange over multiple however, name field in JSX needs to match
+
+    handleSubmitChange = async (event) => {
         event.preventDefault();
         const data = {...this.state};
     
@@ -28,7 +38,6 @@ class AddCustomerForm extends React.Component {
         };
         const response = await fetch(locationUrl, fetchConfig);
         if (response.ok) {
-          const newLocation = await response.json();
         
           const cleared = {
             name: '',
@@ -39,17 +48,17 @@ class AddCustomerForm extends React.Component {
         }    
     }
 
-    handleNameChange(event) {
+    handleNameChange = (event) => {
         const value = event.target.value;
         this.setState({name: value})
     }
 
-    handleAddressChange(event) {
+    handleAddressChange = (event) => {
         const value = event.target.value;
         this.setState({address: value})
     }
 
-    handleNumberChange(event) {
+    handleNumberChange = (event) => {
         const value = event.target.value;
         this.setState({phone_number: value})
     }

@@ -1,25 +1,26 @@
 import React from 'react';
 
 class CreateAutomobileForm extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-          color: '',
-          year: '',
-          vin: '',
-          model_id: '',
-          models: []
-        };
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //       color: '',
+    //       year: '',
+    //       vin: '',
+    //       model_id: '',
+    //       models: []
+    //     };
+    // }
 
-        this.handleColorChange = this.handleColorChange.bind(this);
-        this.handleYearChange = this.handleYearChange.bind(this);
-        this.handleVinChange = this.handleVinChange.bind(this);
-        this.handleVehicleModelChange = this.handleVehicleModelChange.bind(this);
-        this.handleSubmitChange = this.handleSubmitChange.bind(this);
-    }
+    state = {
+        color: '',
+        year: '',
+        vin: '',
+        model_id: '',
+        models: []
+    };
 
-
-    async handleSubmitChange(event) {
+    handleSubmitChange = async (event) => {
         event.preventDefault();
         const data = {...this.state};
         console.log(data);
@@ -48,22 +49,22 @@ class CreateAutomobileForm extends React.Component {
         }    
     }
     
-    handleColorChange(event) {
+    handleColorChange = (event) => {
         const value = event.target.value;
         this.setState({color: value})
       }
 
-    handleYearChange(event) {
+    handleYearChange = (event) => {
       const value = event.target.value;
       this.setState({year: value})
     }
 
-    handleVinChange(event) {
+    handleVinChange = (event) => {
       const value = event.target.value;
       this.setState({vin: value})
     }
 
-    handleVehicleModelChange(event) {
+    handleVehicleModelChange = (event) => {
       const value = event.target.value;
       this.setState({model_id: value})
     }
