@@ -1,13 +1,7 @@
 import React from 'react';
 
 class CreateManufacturerForm extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         name: ''
-    //     };
-    // }
-
+    
     state = {
         name: ''
     };

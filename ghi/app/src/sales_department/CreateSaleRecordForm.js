@@ -1,19 +1,6 @@
 import React from 'react';
 
 class CreateSaleRecordForm extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     automobile: '',
-  //     salesperson: '',
-  //     customer: '',
-  //     price: '',
-  //     autos: [],
-  //     salespersons: [],
-  //     customers: []
-  //   };
-  // }
-
   state = {
     automobile: '',
     salesperson: '',

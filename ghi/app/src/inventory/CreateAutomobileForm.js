@@ -1,17 +1,7 @@
 import React from 'react';
 
 class CreateAutomobileForm extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //       color: '',
-    //       year: '',
-    //       vin: '',
-    //       model_id: '',
-    //       models: []
-    //     };
-    // }
-
+    
     state = {
         color: '',
         year: '',
@@ -52,7 +42,7 @@ class CreateAutomobileForm extends React.Component {
     handleColorChange = (event) => {
         const value = event.target.value;
         this.setState({color: value})
-      }
+    }
 
     handleYearChange = (event) => {
       const value = event.target.value;

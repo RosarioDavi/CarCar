@@ -1,28 +1,12 @@
 import React from 'react';
 
-class AddCustomerForm extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         name: '',
-    //         address: '',
-    //         phone_number: ''
-    //     };
-    // }
-    // this.state method
+class AddCustomerForm extends React.Component {  
     
     state = {
         name: '',
         address: '',
         phone_number: ''
     };
-
-    // handleChange = (event) => {
-    //     const value = event.target.value;
-    //     const name = event.target.name;
-    //     this.setState({[name]: value});
-    // }
-    // handlechange will allow one handlechange over multiple however, name field in JSX needs to match
 
     handleSubmitChange = async (event) => {
         event.preventDefault();

@@ -1,14 +1,6 @@
 import React from 'react';
 
 class SalesHistory extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         salesperson: '',
-    //         salesrecords: [],
-    //         salespersons:[]
-    //     }
-    // }
 
     state = {
         salesperson: '',

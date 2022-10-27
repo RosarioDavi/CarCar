@@ -1,16 +1,7 @@
 import React from 'react';
 
 class CreateVehicleModelForm extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //       name: '',
-    //       picture_url: '',
-    //       manufacturer_id: '',
-    //       manufacturers: []
-    //     };
-    // }
-
+    
     state = {
       name: '',
       picture_url: '',

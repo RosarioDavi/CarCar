@@ -1,14 +1,7 @@
 import React from 'react';
 
 class AddSalesPersonForm extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         name: '',
-    //         employee_id: ''
-    //     };
-    // }
-
+    
     state = {
         name: '',
         employee_id: ''
