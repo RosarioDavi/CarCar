@@ -1,48 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 class ServiceHistory extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            services: '',
-            services: []
-
+            userInput: '',
+            services: [],
+            fileredServices:[]
         }
 
         // this.handleChange = this.handleChange.bind(this)
 }
 
-// handleChange(e){
-//     let currentList = []
-//     let newList = []
+    handleChange=async (e) => {
+        const data = this.state.services
+        await this.setState({userInput: e.target.value}) 
+        if (this.state.userInput === ''){
+            this.setState({fileredServices: data})
+        }
+        else{
+            let datafilter = data.filter(service=>service.automobile.vin===this.state.userInput)
+            this.setState({fileredServices: datafilter}) 
 
-//     if(e.target.value !== ""){
-//         currentList= this.state.vin;
+        }
 
-//         newList = currentList.filter(auto.vin)
-//         const filter = e.target.value.auto.vin()
+    }
 
-//         return newList.includes(filter)
-//     }
+        
 
-//     else{
-//         newList = this.props.auto.vin
-//     }
-
-//     this.setState({
-//         filtered:newList
-//     })
-
-// }
-
-
+ 
 
 
 async loadServiceAppointment(){
     const response = await fetch('http://localhost:8080/api/service/');
     if (response.ok) {
       const data = await response.json();
-      this.setState({services:data.services.filter((service)=>service.finished==true)})
+      let completed =data.services.filter((service)=>service.finished==true)
+      this.setState({services:completed,
+      fileredServices : completed })
     } else {
       console.error(response);
     }
@@ -59,9 +54,12 @@ async loadServiceAppointment(){
  render () {
     return (
         <div className="container">
-            <h1>Service Appointments </h1>
+            <h1>Service Appointments History </h1>
             <div>
-                <input type= 'text' className = 'input' placeholder='Search By VIN' />
+                <input type= 'text' className = 'input' onChange={(e)=>this.handleChange(e)} value={this.state.userInput} placeholder='Search By VIN' />
+               
+                    
+                
             </div>
                 <table className="table table-striped">
                     <thead>
@@ -75,7 +73,7 @@ async loadServiceAppointment(){
                         </tr>
                     </thead>
                     <tbody>          
-                    {this.state.services.map(service => {
+                    {this.state.fileredServices.map(service => {
                         return (
                         <tr key={service.id}>
                             <td>{ service.automobile.vin}</td>
