@@ -6,7 +6,7 @@ class AutomobileVO(models.Model):
     year = models.PositiveSmallIntegerField(null=True)
     vin = models.CharField(max_length=17, unique=True)
     href = models.CharField(max_length = 200,unique=True, null=True)
-    sold = models.BooleanField(default=False, null=True)
+    sold = models.BooleanField()
 
     def get_api_url(self):
         return reverse("api_automobile", kwargs={"vin": self.vin})

@@ -4,7 +4,7 @@ class ServiceAppointmentList extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            services :[]
+            services :[],
         }
        }
 
@@ -13,6 +13,7 @@ class ServiceAppointmentList extends React.Component {
         if (response.ok) {
           const data = await response.json();
           this.setState({services:data.services})
+        
         } else {
           console.error(response);
         }
