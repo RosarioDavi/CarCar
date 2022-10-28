@@ -14,6 +14,15 @@ microservice, here.
 
 Added a AutomobileVO, Customer, Technician and ServiceAppointment models. AutomobileVo was created to poll the data from a poller from the autobile model in the inventory microservice. We were tasked with creating a website that would manage the sales and services of a car company. I was tasked with handling the services. I created a List page for service appointments and a create page for Technicians and Services using JS React.
 
+To start the project and view it in localhost. 
+Start by getting docker container up and running. 
+Run the following commands in terminal. 
+
+docker volume create beta-data
+docker-compose build
+docker-compose up
+
+Once containers are up and running along with the images and data, you can go to http://localhost:3000/home. This is the home page of our project that provides a navgation with links to create and list views for both sales and services. 
 
 
 ## Sales microservice
