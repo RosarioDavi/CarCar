@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <div className="container">
+      <div className="container w-50">
         <Routes>
           <Route path="home">
             <Route index element={<MainPage />} />

@@ -94,12 +94,9 @@ def api_show_salesperson(request, pk):
 
 
 @require_http_methods(["GET", "POST"])
-def api_list_salesrecords(request, auto_vo_id=None):
+def api_list_salesrecords(request):
     if request.method == "GET":
-        if auto_vo_id is not None:
-            sales = SalesRecord.objects.filter(auto=auto_vo_id)
-        else:
-            sales = SalesRecord.objects.all()
+        sales = SalesRecord.objects.all()
         return JsonResponse(
                 {"salesrecords": sales},
                 encoder=SalesRecordListEncoder
