@@ -2,7 +2,7 @@
 
 Team:
 
-* Person 1 - Which microservice? Rosario    
+* Person 1 - Which microservice? Rosario - Services
 * Person 2 - Which microservice? John
 
 ## Design
@@ -11,6 +11,10 @@ Team:
 
 Explain your models and integration with the inventory
 microservice, here.
+
+Added a AutomobileVO, Customer, Technician and ServiceAppointment models. AutomobileVo was created to poll the data from a poller from the autobile model in the inventory microservice. We were tasked with creating a website that would manage the sales and services of a car company. I was tasked with handling the services. I created a List page for service appointments and a create page for Technicians and Services using JS React.
+
+
 
 ## Sales microservice
 

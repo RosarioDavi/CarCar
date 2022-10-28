@@ -21,6 +21,7 @@ def get_automobile():
             href = automobile["href"],
             defaults= {
                 'vin': automobile ['vin'],
+                'sold': automobile ['sold']
             }
         )
 

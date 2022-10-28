@@ -46,6 +46,7 @@ class ServiceAppointmentList extends React.Component {
           })
         }
         const response = await fetch(url, fetchConfig);
+        this.loadServiceAppointment()
       }
 
       
