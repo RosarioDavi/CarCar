@@ -37,7 +37,6 @@ class ServiceAppointmentList extends React.Component {
       }
 
        async finished(complete) {
-        console.log(complete)
         const url = `http://localhost:8080/api/pending/${complete}/`
         const fetchConfig = {
           method: "put",
