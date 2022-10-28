@@ -47,13 +47,7 @@ class ServiceAppointmentList extends React.Component {
           })
         }
         const response = await fetch(url, fetchConfig);
-        if (response.ok) {
-          console.log({"Success": "completed appointment"})
-        } else {
-            console.log({"Failed": "Did not completed appointment"})
-        }
-    }
-
+      }
 
 
       render () {
@@ -64,6 +58,7 @@ class ServiceAppointmentList extends React.Component {
                         <thead>
                             <tr>
                                 <th>VIN</th>
+                                <th>VIP</th>
                                 <th>Customer Name</th>
                                 <th>Date</th>
                                 <th>Time</th>
@@ -76,6 +71,7 @@ class ServiceAppointmentList extends React.Component {
                             return (
                             <tr key={service.id}>
                                 <td>{ service.automobile.vin}</td>
+                                <td>{service.automobile.sold}</td>
                                 <td>{ service.customer.name}</td>
                                 <td>{ service.appointment_date}</td>
                                 <td>{service.time}</td>

@@ -1,60 +1,9 @@
-from django.shortcuts import render
-from common.json import ModelEncoder
 from .models import AutomobileVO, ServiceAppointment, Customer, Technician
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 import json
+from .encoders import CustomerDetailEncoder, TechnicianDetailEncoder, ServiceAppointmentListEncoder, ServiceAppointmentDetailEncoder
 
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = ['vin']
-
-class CustomerDetailEncoder(ModelEncoder):
-    model = Customer
-    properties = ['name', 'phone_number', 'id']
-
-class TechnicianDetailEncoder(ModelEncoder):
-    model = Technician
-    properties = ['name', 'employee_number', 'id']
-
-class ServiceAppointmentListEncoder(ModelEncoder):
-    model = ServiceAppointment
-    properties = [
-        "automobile",
-        "customer",
-        "id",
-        "assigned_technician",
-        "service_reason",
-        "appointment_date",
-        "time",
-        "finished"
-    ]
-    encoders = {
-        "customer" : CustomerDetailEncoder(),
-        "automobile" : AutomobileVOEncoder(),
-        "assigned_technician" : TechnicianDetailEncoder()
-    
-    }
-
-class ServiceAppointmentDetailEncoder(ModelEncoder):
-    model = ServiceAppointment
-    properties = [
-        "automobile",
-        "customer",
-        "appointment_date",
-        "assigned_technician",
-        "service_reason",
-        "time",
-        "finished"
-        
-    ]
-
-    encoders = {
-        "customer" : CustomerDetailEncoder(),
-        "automobile" : AutomobileVOEncoder(),
-        "assigned_technician" : TechnicianDetailEncoder()
-    
-    }
 
 @require_http_methods(["GET"])
 def api_list_filter(request):
