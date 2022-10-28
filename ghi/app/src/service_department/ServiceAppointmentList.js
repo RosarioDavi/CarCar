@@ -49,7 +49,7 @@ class ServiceAppointmentList extends React.Component {
         const response = await fetch(url, fetchConfig);
       }
 
-
+      
       render () {
         return (
             <div className="container">
@@ -71,7 +71,7 @@ class ServiceAppointmentList extends React.Component {
                             return (
                             <tr key={service.id}>
                                 <td>{ service.automobile.vin}</td>
-                                <td>{service.automobile.sold}</td>
+                                <td>{service.automobile.sold ? "🌟" : "🙁"}</td>
                                 <td>{ service.customer.name}</td>
                                 <td>{ service.appointment_date}</td>
                                 <td>{service.time}</td>
